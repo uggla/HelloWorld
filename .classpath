@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry excluding="test/java/hello/|test/java/" kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/java/test/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/usr/share/java/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/usr/share/java/junit.jar"/>
+	<classpathentry kind="lib" path="/usr/share/java/hamcrest/all.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
