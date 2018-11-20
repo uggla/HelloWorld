@@ -13,12 +13,12 @@ pipeline {
                       sh "mvn clean package"
                     }
                     docker.withRegistry('https://registy.uggla.fr/') {
-                      def myImg = docker.image('myImg')
+                      def myImg = docker.image('maven:3-jdk-8-slim')
                       // or docker.build, etc.
                       //sh "docker pull --all-tags ${myImg.imageName()}"
                       // runs: docker pull --all-tags docker.mycorp.com/myImg
-                      sh "docker tag maven:3-jdk-8-slim registry.uggla.fr/maven:3-jdk-8-slim"
-                      sh "docker push registry.uggla.fr/maven:3-jdk-8-slim"
+                      //sh "docker tag maven:3-jdk-8-slim registry.uggla.fr/maven:3-jdk-8-slim"
+                      sh "docker push ${myImg.imageName()}"
                     }
                   }
                 }
