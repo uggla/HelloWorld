@@ -54,6 +54,7 @@ pipeline {
                     remote.allowAnyHosts = true
                     remote.user = user
                     remote.identyFile = pkey
+                    echo "${remote}"
                     sshCommand remote: remote, command: "docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
 	          }
                 }
