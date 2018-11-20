@@ -47,12 +47,12 @@ pipeline {
         stage('Deploy app') {
             steps {
                 script {    
-                  withCredentials([sshUserPrivateKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
+                  withCredentials([sshUserPrivateKey(credentialsId:'ssh', keyFileVariable:'pkey', passphraseVariable:'', usernameVariable:'user')]){
                     def remote = [:]
                     remote.name = "vmdev"
                     remote.host = VMDEV
                     remote.allowAnyHosts = true
-                    remote.user = "root"
+                    remote.user = user
                     remote.identyFile = pkey
                     sshCommand remote: remote, command: "docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
 	          }
