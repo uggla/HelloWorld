@@ -12,7 +12,7 @@ pipeline {
                     docker.image('maven:3-jdk-8-slim').inside("-v $WORKSPACE:/usr/src/myproject:rw -v $HOME/.m2:/root/.m2:rw -w /usr/src/myproject") { c ->
                       sh "mvn clean package"
                     }
-                    docker.withRegistry('https://registy.uggla.fr/') {
+                    docker.withRegistry('https://registry.uggla.fr/') {
                       def myImg = docker.image('maven:3-jdk-8-slim')
                       // or docker.build, etc.
                       //sh "docker pull --all-tags ${myImg.imageName()}"
