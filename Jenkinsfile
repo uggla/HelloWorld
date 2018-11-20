@@ -48,7 +48,13 @@ pipeline {
             steps {
                 script {    
                   withCredentials([sshUserPriveKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
-                    sh "ssh -t -i ${pkey} root@${VMDEV} docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
+                    def remote = [:]
+                    remote.name = "vmdev"
+                    remote.host = VMDEV
+                    remote.allowAnyHosts = true
+                    remote.user = "root"
+                    remote.identyFile = pkey
+                    sshCommand remote: remote, command: "docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
 	          }
                 }
             }
