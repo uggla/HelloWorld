@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy app') {
             steps {
                 script {    
-                  withCredentials([sshUserPriveKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
+                  withCredentials([sshUserPrivateKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
                     def remote = [:]
                     remote.name = "vmdev"
                     remote.host = VMDEV
