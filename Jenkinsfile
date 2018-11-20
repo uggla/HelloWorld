@@ -14,6 +14,8 @@ pipeline {
                     }
                   }
                 }
+                sh "docker tag maven:3-jdk-8-slim registry.uggla.fr/maven:3-jdk-8-slim"
+                sh "docker push registry.uggla.fr/maven:3-jdk-8-slim"
             }
         }
     }
