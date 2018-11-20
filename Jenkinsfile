@@ -46,9 +46,10 @@ pipeline {
         }
         stage('Deploy app') {
             steps {
-              sh "ssh root@${VMDEV}"
-                    }
-                  }
+                script {    
+                  withCredentials([sshUserPriveKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
+                    sh "ssh -i ${pkey} root@${VMDEV} docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
+	          }
                 }
             }
         }
