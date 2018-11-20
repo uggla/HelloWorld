@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {    
                   withCredentials([sshUserPriveKey(credentialsId:'ssh', keyFileVariable:'pkey')]){
-                    sh "ssh -i ${pkey} root@${VMDEV} docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
+                    sh "ssh -t -i ${pkey} root@${VMDEV} docker run -ti registry.uggla.fr/${IMAGENAME}:${env.BUILD_ID}"
 	          }
                 }
             }
