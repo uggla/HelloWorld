@@ -1,3 +1,5 @@
+def IMAGENAME='named-your-image'
+
 pipeline {
     agent any
 
@@ -21,7 +23,8 @@ pipeline {
                 script {    
                   docker.withTool('latest') {
                     docker.withRegistry('https://registry.uggla.fr/') {
-                      def myImg = docker.build("my-image:${env.BUILD_ID}")
+                      def myImg = docker.build("${IMAGENAME}:${env.BUILD_ID}")
+                      myImg.push()
                     }
                   }
                 }
