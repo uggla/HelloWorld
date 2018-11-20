@@ -13,7 +13,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   sonarqube:
-    image: sonarqube
+    image: sonarqube:lts
     ports:
       - "9000:9000"
     networks:
@@ -27,7 +27,7 @@ services:
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
 
   db:
-    image: postgres
+    image: postgres:10
     networks:
       - cinet
     environment:
