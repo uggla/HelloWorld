@@ -1,4 +1,5 @@
 def IMAGENAME='named-your-image'
+def VMDEV='188.166.48.108'
 
 pipeline {
     agent any
@@ -38,6 +39,14 @@ pipeline {
                     docker.withRegistry('https://registry.uggla.fr/') {
                       def myImg = docker.build("${IMAGENAME}:${env.BUILD_ID}")
                       myImg.push()
+                    }
+                  }
+                }
+            }
+        }
+        stage('Deploy app') {
+            steps {
+              sh "ssh root@${VMDEV}"
                     }
                   }
                 }
