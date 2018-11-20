@@ -18,6 +18,13 @@ pipeline {
                 }
             }
         }
+        stage('Quality check') {
+            steps {
+              withSonarQubeEnv('sonar') {
+                sh 'mvn sonar:sonar'
+              }
+            }
+	}
         stage('Package app') {
             steps {
                 script {    
