@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="bzm - Concurrency Thread Group" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="TargetLevel">42</stringProp>
+        <stringProp name="RampUp">2</stringProp>
+        <stringProp name="Steps"></stringProp>
+        <stringProp name="Hold"></stringProp>
+        <stringProp name="LogFilename"></stringProp>
+        <stringProp name="Iterations"></stringProp>
+        <stringProp name="Unit">M</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler" enabled="false">
+          <stringProp name="WebDriverSampler.script">WDS.sampleResult.sampleStart(); //captures sampler&apos;s start time
+WDS.sampleResult.getLatency();
+WDS.log.info(&quot;Sample started&quot;);
+
+
+// 1. Open the Web Application
+WDS.browser.get(&apos;http://indeed.co.in&apos;)
+
+
+// 2. Enter characters into the text input field
+var selenium = JavaImporter(org.openqa.selenium)
+var fileUtils = JavaImporter(org.apache.commons.io)
+var io = JavaImporter(java.io)
+
+var what = WDS.browser.findElement(selenium.By.id(&apos;text-input-what&apos;))
+what.clear()
+what.sendKeys([&apos;Selenium&apos;])
+var where = WDS.browser.findElement(selenium.By.id(&apos;text-input-where&apos;))
+where.clear()
+where.sendKeys([&apos;india&apos;])
+var screenshot = WDS.browser.getScreenshotAs(selenium.OutputType.FILE)
+//fileUtils.FileUtils.copy(screenshot, new io.File(&apos;C:\temp\screenshot.png&apos;))
+//screenshot.renameTo(io.File(&apos;c:\temp\screenshot.png&apos;))
+fileUtils.FileUtils.copyFile(screenshot, new io.File(&apos;c:/temp/messages1.png&apos;))
+
+
+// 3. Click on the button to submit the form
+//var button = WDS.browser.findElement(pkg.By.XPath(&apos;//*[@id=&quot;whatWhere&quot;]/form/div[3]/button&apos;))
+//&lt;button type=&quot;submit&quot; class=&quot;icl-Button icl-Button--primary icl-Button--md icl-WhatWhere-button&quot; size=&quot;md&quot;&gt;Find Jobs&lt;/button&gt;
+//var button = WDS.browser.findElement(pkg.By.id(&apos;fj&apos;))
+//button.click()
+
+
+// 4. Verify successful form submission
+//var results = WDS.browser.findElements(pkg.By.cssSelector(&apos;.summary&apos;))
+//var results = WDS.browser.findElements(pkg.By.id(&apos;resultsCol&apos;))
+//if(results.empty) {
+//   WDS.sampleResult.successful = false
+//   WDS.sampleResult.responseMessage = &apos;There were no results returned&apos;
+//}
+
+WDS.sampleResult.sampleEnd();
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler" enabled="true">
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.*
+import org.apache.commons.io.*
+import java.io.*
+
+
+WDS.sampleResult.sampleStart(); //captures sampler&apos;s start time
+WDS.sampleResult.getLatency();
+WDS.log.info(&quot;Sample started&quot;);
+
+WDS.browser.get(&apos;http://indeed.co.in&apos;)
+def what = WDS.browser.findElement(By.id(&apos;text-input-what&apos;))
+what.clear()
+what.sendKeys(&apos;Selenium&apos;)
+def where = WDS.browser.findElement(By.id(&apos;text-input-where&apos;))
+where.clear()
+where.sendKeys(&apos;india&apos;)
+
+def screenshot = WDS.browser.getScreenshotAs(OutputType.FILE)
+FileUtils.copyFile(screenshot, new File(&apos;c:/temp/messages1.png&apos;))
+
+WDS.sampleResult.sampleEnd();
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="jp@gc - Chrome Driver Config" enabled="false">
+          <stringProp name="WebDriverConfig.proxy_type">SYSTEM</stringProp>
+          <stringProp name="WebDriverConfig.proxy_pac_url"></stringProp>
+          <stringProp name="WebDriverConfig.http_host">205.167.7.126</stringProp>
+          <intProp name="WebDriverConfig.http_port">10912</intProp>
+          <boolProp name="WebDriverConfig.use_http_for_all_protocols">true</boolProp>
+          <stringProp name="WebDriverConfig.https_host"></stringProp>
+          <intProp name="WebDriverConfig.https_port">8080</intProp>
+          <stringProp name="WebDriverConfig.ftp_host"></stringProp>
+          <intProp name="WebDriverConfig.ftp_port">8080</intProp>
+          <stringProp name="WebDriverConfig.socks_host"></stringProp>
+          <intProp name="WebDriverConfig.socks_port">8080</intProp>
+          <stringProp name="WebDriverConfig.no_proxy">localhost</stringProp>
+          <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
+          <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
+          <boolProp name="WebDriverConfig.dev_mode">false</boolProp>
+          <stringProp name="ChromeDriverConfig.chromedriver_path">C:\apache-jmeter-5.1.1\lib\chromedriver.exe</stringProp>
+          <boolProp name="ChromeDriverConfig.android_enabled">false</boolProp>
+          <boolProp name="ChromeDriverConfig.headless_enabled">false</boolProp>
+          <boolProp name="ChromeDriverConfig.insecurecerts_enabled">false</boolProp>
+        </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.RemoteDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig" testname="jp@gc - Remote Driver Config" enabled="true">
+          <stringProp name="RemoteDriverConfig.general.selenium.grid.url">http://10.238.82.246:8880/wd/hub</stringProp>
+          <stringProp name="RemoteDriverConfig.general.selenium.capability">CHROME</stringProp>
+          <stringProp name="RemoteDriverConfig.general.selenium.file.detector">USELESS</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.config.RemoteDriverConfig>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
