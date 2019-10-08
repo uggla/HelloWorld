@@ -12,7 +12,19 @@ pipeline {
                 echo 'Welcome !'
                 echo sh(script: 'env|sort', returnStdout: true)
                 echo "Commit: ${env.GIT_COMMIT}"
+                script {
+                    h = new buildHistory()
+                    println(h)
+                }
             }
         }
     }
+}
+
+class buildHistory {
+
+    String buildHistory(){
+        return "Bla"
+    }
+
 }
