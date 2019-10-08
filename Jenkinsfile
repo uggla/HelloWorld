@@ -16,6 +16,10 @@ pipeline {
                     h = new buildHistory()
                     println(h)
                 }
+                sh "echo toto>truc"
+                sh "git add truc"
+                sh 'git commit -m "machin"'
+                sh 'git push'
             }
         }
     }
