@@ -25,7 +25,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'uggla', keyFileVariable: 'pkey', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
                     sh 'echo "${pkey}" > id_rsa'
                     sh 'chmod 700 id_rsa'
-                    sh 'git config core.sshCommand "ssh -i id_rsa -F /dev/null -o StrictHostKeyChecking=no"'
+                    sh 'git config core.sshCommand "ssh -i id_rsa -F /dev/null -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"'
                     sh 'git remote set-url origin git@github.com:uggla/HelloWorld.git'
                     sh 'git push'
                 }
