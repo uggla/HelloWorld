@@ -29,7 +29,8 @@ class buildHistory {
         this.commit = "bla"
     }
 
-    String toString() {
+    @NonCPS
+    public String toString() {
         return this.commit
     }
 
