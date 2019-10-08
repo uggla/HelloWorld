@@ -16,11 +16,11 @@ pipeline {
                     h = new buildHistory()
                     println(h)
                 }
-                sh "echo toto>truc"
-                sh "git add truc"
                 sh 'git config --global user.email "uggla@free.fr"'
                 sh 'git config --global user.name "Uggla"'
                 sh 'git checkout ci_debug'
+                sh "echo toto>truc"
+                sh "git add truc"
                 sh 'git commit -m "machin"'
                 withCredentials([sshUserPrivateKey(credentialsId: 'uggla', keyFileVariable: 'pkey', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
                     sh 'echo "${pkey}" > id_rsa'
