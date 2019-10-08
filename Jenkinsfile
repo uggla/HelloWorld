@@ -25,7 +25,8 @@ pipeline {
                     sh 'echo "${pkey}" > id_rsa'
                     sh 'git config core.sshCommand "ssh -i id_rsa -F /dev/null"'
                     /* sh 'git remote add origin git@github.com:uggla/HelloWorld.git' */
-                    sh 'git push origin ci_debug'
+                    sh 'git branch --set-upstream-to=origin/ci_debug'
+                    sh 'git push'
                 }
             }
         }
