@@ -18,9 +18,9 @@ pipeline {
                 }
                 sh "echo toto>truc"
                 sh "git add truc"
-                sh 'git commit -m "machin"'
                 sh 'git config --global user.email "uggla@free.fr"'
                 sh 'git config --global user.name "Uggla"'
+                sh 'git commit -m "machin"'
                 sh 'git push'
             }
         }
