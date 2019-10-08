@@ -2,8 +2,8 @@ def IMAGENAME='named-your-image'
 def VMDEV='188.166.48.108'
 
 node {
-    // def git = checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/ci_debug']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/uggla/HelloWorld']]]
-    def git = checkout {}
+    cleanWs()
+    def git = checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/ci_debug']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/uggla/HelloWorld']]]
     def myMethod = load("myMethod.groovy")
     println(git)
     stage('Build') {
