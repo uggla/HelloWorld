@@ -23,8 +23,10 @@ pipeline {
 
 class buildHistory {
 
-    String buildHistory(){
-        return "Bla"
+    String commit
+
+    buildHistory(){
+        this.commit = "bla"
     }
 
 }
