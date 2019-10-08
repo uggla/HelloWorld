@@ -15,6 +15,7 @@ pipeline {
                 script {
                     h = new buildHistory()
                     println(h)
+                    commitPush()
                 }
                 sh 'git config --global user.email "uggla@free.fr"'
                 sh 'git config --global user.name "Uggla"'
@@ -47,4 +48,9 @@ class buildHistory {
         return this.commit
     }
 
+}
+
+def commitPush = {
+
+    println("hello !!!")
 }
