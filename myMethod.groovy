@@ -1,4 +1,4 @@
-def sayHello() = {
+def sayHello() {
     println("hello !!!")
 }
 
