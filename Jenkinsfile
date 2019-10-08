@@ -50,7 +50,7 @@ class buildHistory {
 
 }
 
-def commitPush = {
+commitPush = {
 
     println("hello !!!")
 }
