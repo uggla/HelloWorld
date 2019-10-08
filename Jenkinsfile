@@ -10,6 +10,7 @@ pipeline {
                 echo 'Hello world!' 
                 echo 'Coucou !' 
                 echo 'Welcome !'
+                echo sh(script: 'env|sort', returnStdout: true)
             }
         }
     }
