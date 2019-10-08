@@ -10,7 +10,8 @@ node {
         echo 'Coucou !' 
         echo 'Welcome !'
         echo sh(script: 'env|sort', returnStdout: true)
-        echo "Commit: ${env.GIT_COMMIT}"
+        echo "Commit: ${git.GIT_COMMIT}"
+        echo "Branch: ${git.GIT_BRANCH}"
         h = new buildHistory()
         println(h)
         myMethod.sayHello()
