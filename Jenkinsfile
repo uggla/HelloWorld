@@ -1,8 +1,8 @@
 def IMAGENAME='named-your-image'
 def VMDEV='188.166.48.108'
-def myMethod = load("myMethod.groovy")
 
 node {
+    def myMethod = load("myMethod.groovy")
     stage('Build') {
         echo 'Hello world!' 
         echo 'Coucou !' 
