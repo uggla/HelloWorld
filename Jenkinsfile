@@ -1,5 +1,6 @@
 def IMAGENAME='named-your-image'
 def VMDEV='188.166.48.108'
+def myMethod = load("myMethod.groovy")
 
 node {
     stage('Build') {
@@ -10,7 +11,7 @@ node {
         echo "Commit: ${env.GIT_COMMIT}"
         h = new buildHistory()
         println(h)
-        commitPush()
+        myMethod.commitPush()
         sh 'git config --global user.email "uggla@free.fr"'
         sh 'git config --global user.name "Uggla"'
         sh 'git checkout ci_debug'
@@ -39,9 +40,4 @@ class buildHistory {
         return this.commit
     }
 
-}
-
-def commitPush = {
-
-    println("hello !!!")
 }
