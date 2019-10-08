@@ -12,7 +12,7 @@ node {
         echo "Commit: ${env.GIT_COMMIT}"
         h = new buildHistory()
         println(h)
-        myMethod.commitPush()
+        myMethod.sayHello()
         sh 'git config --global user.email "uggla@free.fr"'
         sh 'git config --global user.name "Uggla"'
         sh 'git checkout ci_debug'

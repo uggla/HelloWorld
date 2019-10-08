@@ -1,4 +1,4 @@
-def commitPush = {
+def sayHello = {
     println("hello !!!")
 }
 
