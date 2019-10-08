@@ -21,7 +21,9 @@ pipeline {
                 sh 'git config --global user.email "uggla@free.fr"'
                 sh 'git config --global user.name "Uggla"'
                 sh 'git commit -m "machin"'
-                sh 'git push'
+                withCredentials([sshUserPrivateKey(credentialsId: 'uggla', keyFileVariable: 'pkey', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
+                    sh 'git push'
+                }
             }
         }
     }
