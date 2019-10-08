@@ -24,7 +24,7 @@ pipeline {
                 sh 'git commit -m "machin"'
                 withCredentials([sshUserPrivateKey(credentialsId: 'uggla', keyFileVariable: 'pkey', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
                     sh 'echo "${pkey}" > id_rsa'
-                    sh 'git config core.sshCommand "ssh -i id_rsa -F /dev/null"'
+                    sh 'git config core.sshCommand "ssh -i id_rsa -F /dev/null -o StrictHostKeyChecking=no"'
                     sh 'git remote set-url origin git@github.com:uggla/HelloWorld.git'
                     sh 'git push'
                 }
