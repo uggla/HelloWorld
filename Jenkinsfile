@@ -29,4 +29,8 @@ class buildHistory {
         this.commit = "bla"
     }
 
+    String toString() {
+        return this.commit
+    }
+
 }
