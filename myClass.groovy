@@ -16,4 +16,9 @@ class buildHistory {
     }
 }
 
+def sayTruc() {
+    h = new buildHistory()
+    println(h)
+}
+
 return this;
