@@ -11,6 +11,9 @@ class buildHistory {
         return this.commit
     }
 
+    public def doStuff() {
+        return "HI"
+    }
 }
 
 return new buildHistory();
