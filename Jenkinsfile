@@ -15,7 +15,7 @@ node {
         echo "Commit: ${git.GIT_COMMIT}"
         echo "Branch: ${git.GIT_BRANCH}"
         //println myClass.doStuff()
-        println("buildHistory:" + myClass.sayTruc())
+        println("buildHistory: ${myClass.sayTruc()}")
         myMethod.sayHello()
         sh 'echo "Coucou" > bidule.txt'
         myMethod.pushFileToGit("bidule.txt")
