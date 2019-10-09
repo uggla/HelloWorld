@@ -11,9 +11,13 @@ def pushFileToGit(String file) {
     withCredentials([sshUserPrivateKey(credentialsId: 'uggla', keyFileVariable: 'pkey', passphraseVariable: 'passphrase', usernameVariable: 'user')]) {
         sh 'git config core.sshCommand "ssh -i ${pkey} -F /dev/null -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"'
         sh 'git remote set-url origin git@github.com:uggla/HelloWorld.git'
-        result = sh(script: 'git push', returnStdout:true).trim()
-        println("Here")
-        println(result)
+        try {
+            result = sh(script: 'git push', returnStdout:true).trim()
+        }
+        catch (Exception ex){
+            println("Here")
+            println(result)
+        }
     }
 }
 
