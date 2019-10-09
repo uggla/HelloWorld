@@ -12,7 +12,7 @@ def pushFileToGit(String file) {
         sh 'git config core.sshCommand "ssh -i ${pkey} -F /dev/null -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"'
         sh 'git remote set-url origin git@github.com:uggla/HelloWorld.git'
         try {
-            result = sh(script: 'set +e ; git push', returnStdout:true).trim()
+            result = sh(script: 'git push || true', returnStdout:true).trim()
         }
         catch (Exception ex){
             println("Here")
