@@ -14,8 +14,8 @@ node {
         echo sh(script: 'env|sort', returnStdout: true)
         echo "Commit: ${git.GIT_COMMIT}"
         echo "Branch: ${git.GIT_BRANCH}"
-        buildHistory()
-        println(h)
+        println myClass()
+        //println(h)
         myMethod.sayHello()
         sh 'echo "Coucou" > bidule.txt'
         myMethod.pushFileToGit("bidule.txt")
