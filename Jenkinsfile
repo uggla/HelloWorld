@@ -19,5 +19,7 @@ node {
         myMethod.sayHello()
         sh 'echo "Coucou" > bidule.txt'
         myMethod.pushFileToGit("bidule.txt")
+        sh 'echo "Coucou" > machin.txt'
+        myMethod.pushFileToGit("machin.txt")
         }
 }
