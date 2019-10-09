@@ -16,9 +16,10 @@ class buildHistory {
     }
 }
 
-def sayTruc() {
+def String sayTruc() {
     h = new buildHistory()
     println(h)
+    return(h);
 }
 
 return this;
