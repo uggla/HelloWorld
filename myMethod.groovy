@@ -15,6 +15,8 @@ def pushFileToGit(String file) {
     }
 }
 
+return this;
+
 class buildHistory {
 
     String commit
@@ -29,5 +31,3 @@ class buildHistory {
     }
 
 }
-
-return this;
