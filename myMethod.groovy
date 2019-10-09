@@ -16,18 +16,3 @@ def pushFileToGit(String file) {
 }
 
 return this;
-
-class buildHistory {
-
-    String commit
-
-    buildHistory(){
-        this.commit = "bla"
-    }
-
-    @NonCPS
-    public String toString() {
-        return this.commit
-    }
-
-}
