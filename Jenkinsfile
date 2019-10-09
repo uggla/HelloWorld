@@ -8,14 +8,14 @@ node {
     def myClass = load("myClass.groovy")
     println(git)
     stage('Build') {
-        echo 'Hello world!' 
-        echo 'Coucou !' 
+        echo 'Hello world!'
+        echo 'Coucou !'
         echo 'Welcome !'
         echo sh(script: 'env|sort', returnStdout: true)
         echo "Commit: ${git.GIT_COMMIT}"
         echo "Branch: ${git.GIT_BRANCH}"
-        println myClass.doStuff()
-        //println(h)
+        //println myClass.doStuff()
+        t = new myClass()
         myMethod.sayHello()
         sh 'echo "Coucou" > bidule.txt'
         myMethod.pushFileToGit("bidule.txt")

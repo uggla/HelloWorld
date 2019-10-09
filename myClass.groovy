@@ -16,4 +16,4 @@ class buildHistory {
     }
 }
 
-return new buildHistory();
+return this;
