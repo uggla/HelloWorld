@@ -7,6 +7,7 @@ def pushFileToGit(String file) {
     sh 'git config --global user.name "Uggla"'
     sh 'git checkout ci_debug'
     sh "git add ${file}"
+    def result
     try {
         result = sh 'git commit -m "new machin"'
     }
