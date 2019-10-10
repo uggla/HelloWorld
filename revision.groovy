@@ -37,7 +37,7 @@
 //     }
 // }
 
-def build(String historyFile, String currentCommit, String currentBuild) {
+def build(String historyFile, String currentBuild, String currentCommit) {
     //return(new buildHistory(historyFile, currentCommit, currentBuild));
     println("coucou")
     // h = new buildHistory(historyFile, currentCommit, currentBuild)
@@ -65,7 +65,7 @@ def readHistory(Map historyData) {
 
 def writeHistory(Map historyData) {
     lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
-        println(historyData["records"])
+        println(historyData)
         writeJSON(file:historyData["historyFile"], json:historyData["records"])
     }
 }
