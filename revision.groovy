@@ -66,7 +66,7 @@ def readHistory(Map historyData) {
 def writeHistory(Map historyData) {
     lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
         println(historyData)
-        writeJSON(file:historyData["historyFile"], json:historyData["records"])
+        writeJSON(file:historyData["historyFile"], json:[color:"bleue", tag:"yellow"])
     }
 }
 
