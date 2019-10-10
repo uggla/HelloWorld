@@ -51,8 +51,9 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["records"] = null
     historyData["records"] = readHistory(historyData)
     if (historyData["records"]) {
-        historyData["prevBuild"] = historyData["records"].max {it.keys}
-        historyData["prevCommit"] = historyData["records"].max {it.keys}.value
+        Map realMap = historyData["records"] as Map
+        historyData["prevBuild"] = realMap.max {it.keys}
+        historyData["prevCommit"] = realMap.max {it.keys}.value
     }
     return historyData
 }
