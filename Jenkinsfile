@@ -7,7 +7,8 @@ node {
     def myMethod = load("myMethod.groovy")
     /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
-    revision.build("revision.json", "truc", "bidule")
+    def historyData = revision.build("revision.json", "truc", "bidule")
+    println(historyData)
     println(git)
     stage('Build') {
         echo 'Hello world!'
