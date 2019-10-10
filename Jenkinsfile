@@ -9,6 +9,9 @@ node {
     def revision = load("revision.groovy")
     def historyData = revision.build("revision.json", "truc", "bidule")
     println(historyData)
+    revision.updateHistory(historyData)
+    sh "ls -al"
+    sh "cat revision.json"
     println(git)
     stage('Build') {
         echo 'Hello world!'
