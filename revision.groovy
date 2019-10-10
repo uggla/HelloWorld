@@ -48,20 +48,20 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["currentCommit"] = currentCommit
     historyData["prevBuild"] = null
     historyData["prevCommit"] = null
-    historyData["records"] = [:]
+    historyData["records"] = null
     historyData["records"] = readHistory(historyData)
     return historyData
 }
 
 def readHistory(Map historyData) {
-    def jsonData = [:]
+    def jsonData = null
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
         }
-        else {
-            jsonData = readJSON(text: '{}')
-        }
+    }
+    else {
+        jsonData = readJSON(text: '{}')
     }
     return jsonData
 }
