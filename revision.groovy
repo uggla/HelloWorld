@@ -50,7 +50,7 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["prevCommit"] = null
     historyData["records"] = null
     historyData["records"] = readHistory(historyData)
-    if (! historyData["records"].isEmpty()) {
+    if (historyData["records"]) {
         historyData["prevBuild"] = historyData["records"].max {it.keys}
         historyData["prevCommit"] = historyData["records"].max {it.keys}.value
     }
