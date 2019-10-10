@@ -9,7 +9,7 @@ node {
     def revision = load("revision.groovy")
     def historyData = revision.build("revision.json", "truc", "bidule")
     println(historyData)
-    revision.updateHistory(historyData)
+    revision.updateHistory("Testit !")
     sh "ls -al"
     sh "cat revision.json"
     println(git)

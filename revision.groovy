@@ -69,9 +69,13 @@ def writeHistory(historyData) {
     }
 }
 
-def updateHistory(historyData) {
-    historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
-    writeHistory(historyData["historyFile"])
+// def updateHistory(historyData) {
+//     historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
+//     writeHistory(historyData["historyFile"])
+// }
+
+def updateHistory(String toto) {
+    println(toto)
 }
 
 return this;
