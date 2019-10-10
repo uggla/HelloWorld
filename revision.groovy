@@ -59,6 +59,9 @@ def readHistory(Map historyData) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
         }
+        else {
+            jsonData = readJSON(text: '{}')
+        }
     }
     return jsonData
 }
@@ -66,7 +69,7 @@ def readHistory(Map historyData) {
 def writeHistory(Map historyData) {
     lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
         println(historyData)
-        writeJSON(file:historyData["historyFile"], json:[color:"bleue", tag:"yellow"])
+        writeJSON(file:historyData["historyFile"], json:historyData["records"])
     }
 }
 
