@@ -5,7 +5,7 @@ node {
     cleanWs()
     def git = checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/ci_debug']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/uggla/HelloWorld']]]
     def myMethod = load("myMethod.groovy")
-    def myClass = load("myClass.groovy")
+    /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
     println(git)
     stage('Build') {
@@ -16,7 +16,7 @@ node {
         echo "Commit: ${git.GIT_COMMIT}"
         echo "Branch: ${git.GIT_BRANCH}"
         //println myClass.doStuff()
-        println("buildHistory: ${myClass.sayTruc()}")
+        /* println("buildHistory: ${myClass.sayTruc()}") */
         myMethod.sayHello()
         sh 'echo "Coucou" > bidule.txt'
         myMethod.pushFileToGit("bidule.txt")
