@@ -8,7 +8,7 @@ node {
     /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
     Random random = new Random()
-    String build = "build-" + random.nextInt(10 ** num)
+    String build = "build-" + env.BUILD_NUMBER
     def historyData = revision.build("revision.json", build , git.GIT_COMMIT)
     println(historyData)
     revision.updateHistory(historyData)
