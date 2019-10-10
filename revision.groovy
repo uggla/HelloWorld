@@ -42,30 +42,36 @@ def build(String historyFile, String currentCommit, String currentBuild) {
     println("coucou")
     // h = new buildHistory(historyFile, currentCommit, currentBuild)
     // return(h);
-    def data = [:]
+    def historyData = [:]
     data["historyFile"] = historyFile
     data["currentBuild"] = currentBuild
     data["currentCommit"] = currentCommit
     data["prevBuild"] = null
     data["prevCommit"] = null
-    data["data"] = readHistory(historyFile)
+    data["records"] = [:]
+    data["records"] = readHistory(historyData)
     return data
 }
 
-def readHistory(String historyFile) {
+def readHistory(historyData) {
     def jsonData = [:]
-    if ( fileExists(historyFile)) {
-        lock(resource: "lock_${historyFile}", inversePrecedence: true) {
-            jsonData = readJSON(file:historyFile)
+    if ( fileExists(historyData["historyFile"])) {
+        lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
+            jsonData = readJSON(file:historyData["historyFile"])
         }
     }
     return jsonData
 }
 
-String writeHistory(String historyFile) {
-    lock(resource: "lock_${historyFile}", inversePrecedence: true) {
-        writeJSON(file:historyFile, json:data)
+def writeHistory(historyData) {
+    lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
+        writeJSON(file:historyFile, json:historyData["records"])
     }
+}
+
+def updateHistory(historyData) {
+    historyData["records"] += [historyData["currentBuild"]: historyData["currentCommit"]
+    writeHistory(historyData["historyFile"])
 }
 
 return this;
