@@ -70,7 +70,7 @@ def writeHistory(historyData) {
 }
 
 def updateHistory(historyData) {
-    historyData["records"] += [historyData["currentBuild"]: historyData["currentCommit"]
+    historyData["records"] = [historyData["currentBuild"]: historyData["currentCommit"]
     writeHistory(historyData["historyFile"])
 }
 
