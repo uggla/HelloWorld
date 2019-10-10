@@ -53,7 +53,7 @@ def build(String historyFile, String currentCommit, String currentBuild) {
     return historyData
 }
 
-def readHistory(historyData) {
+def readHistory(Map historyData) {
     def jsonData = [:]
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
@@ -63,19 +63,19 @@ def readHistory(historyData) {
     return jsonData
 }
 
-def writeHistory(historyData) {
+def writeHistory(Map historyData) {
     lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
         writeJSON(file:historyFile, json:historyData["records"])
     }
 }
 
-// def updateHistory(historyData) {
-//     historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
-//     writeHistory(historyData["historyFile"])
-// }
-
-def updateHistory(String toto) {
-    println(toto)
+def updateHistory(Map historyData) {
+    historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
+    writeHistory(historyData["historyFile"])
 }
+
+// def updateHistory(String toto) {
+//     println(toto)
+// }
 
 return this;
