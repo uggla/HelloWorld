@@ -71,7 +71,7 @@ def writeHistory(Map historyData) {
 
 def updateHistory(Map historyData) {
     historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
-    writeHistory(historyData["historyFile"])
+    writeHistory(historyData)
 }
 
 // def updateHistory(String toto) {
