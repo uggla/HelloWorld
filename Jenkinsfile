@@ -7,7 +7,7 @@ node {
     def myMethod = load("myMethod.groovy")
     /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
-    def historyData = revision.build("revision.json", "truc", "bidule")
+    def historyData = revision.build("revision.json", "build-1", git.GIT_COMMIT)
     println(historyData)
     revision.updateHistory(historyData)
     sh "ls -al"
@@ -27,5 +27,6 @@ node {
         myMethod.pushFileToGit("bidule.txt")
         sh 'echo "Coucou" > machin.txt'
         myMethod.pushFileToGit("machin.txt")
+        myMethod.pushFileToGit("revison.json")
         }
 }
