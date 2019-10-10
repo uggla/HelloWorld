@@ -7,7 +7,9 @@ node {
     def myMethod = load("myMethod.groovy")
     /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
-    def historyData = revision.build("revision.json", "build-1", git.GIT_COMMIT)
+    Random random = new Random()
+    String build = "build-" + random.nextInt(10 ** num)
+    def historyData = revision.build("revision.json", build , git.GIT_COMMIT)
     println(historyData)
     revision.updateHistory(historyData)
     sh "ls -al"
