@@ -6,6 +6,7 @@ node {
     def git = checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/ci_debug']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/uggla/HelloWorld']]]
     def myMethod = load("myMethod.groovy")
     def myClass = load("myClass.groovy")
+    def revision = load("revision.groovy")
     println(git)
     stage('Build') {
         echo 'Hello world!'
