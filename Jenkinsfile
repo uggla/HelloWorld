@@ -27,6 +27,6 @@ node {
         myMethod.pushFileToGit("bidule.txt")
         sh 'echo "Coucou" > machin.txt'
         myMethod.pushFileToGit("machin.txt")
-        myMethod.pushFileToGit("revison.json")
+        myMethod.pushFileToGit("revision.json")
         }
 }
