@@ -43,14 +43,14 @@ def build(String historyFile, String currentCommit, String currentBuild) {
     // h = new buildHistory(historyFile, currentCommit, currentBuild)
     // return(h);
     def historyData = [:]
-    data["historyFile"] = historyFile
-    data["currentBuild"] = currentBuild
-    data["currentCommit"] = currentCommit
-    data["prevBuild"] = null
-    data["prevCommit"] = null
-    data["records"] = [:]
-    data["records"] = readHistory(historyData)
-    return data
+    historyData["historyFile"] = historyFile
+    historyData["currentBuild"] = currentBuild
+    historyData["currentCommit"] = currentCommit
+    historyData["prevBuild"] = null
+    historyData["prevCommit"] = null
+    historyData["records"] = [:]
+    historyData["records"] = readHistory(historyData)
+    return historyData
 }
 
 def readHistory(historyData) {
@@ -70,7 +70,7 @@ def writeHistory(historyData) {
 }
 
 def updateHistory(historyData) {
-    historyData["records"].put([historyData["currentBuild"], historyData["currentCommit"])
+    historyData["records"].put(historyData["currentBuild"], historyData["currentCommit"])
     writeHistory(historyData["historyFile"])
 }
 
