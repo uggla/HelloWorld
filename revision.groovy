@@ -40,8 +40,19 @@ class buildHistory {
 def build(String historyFile, String currentCommit, String currentBuild) {
     //return(new buildHistory(historyFile, currentCommit, currentBuild));
     println("coucou")
-    h = new buildHistory(historyFile, currentCommit, currentBuild)
-    return(h);
+    // h = new buildHistory(historyFile, currentCommit, currentBuild)
+    // return(h);
+    println(readHistory(historyFile))
+}
+
+def readHistory(String historyFile) {
+    def data = [:]
+    if ( fileExists(historyFile)) {
+        lock(resource: "lock_${historyFile}", inversePrecedence: true) {
+            data = readJSON(file:historyFile)
+        }
+    }
+    return data
 }
 
 return this;
