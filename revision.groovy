@@ -1,4 +1,5 @@
 import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 // class buildHistory {
 
 //     private String historyFile
@@ -53,6 +54,7 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["records"] = readHistory(historyData)
     if (historyData["records"]) {
         def realmap = JsonOutput.toJson(historyData["records"])
+        def data = new JsonSlurper().parseText(realmap)
         // historyData["prevBuild"] = realMap.max {it.keys}
         // historyData["prevCommit"] = realMap.max {it.keys}.value
     }
