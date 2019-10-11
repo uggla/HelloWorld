@@ -88,6 +88,7 @@ def updateHistory(Map historyData) {
     writeHistory(historyData)
 }
 
+@NonCPS
 def essai() {
     def jsonSlurper = new JsonSlurper() 
     def object = jsonSlurper.parseText '''     { "simple": 123,       "fraction": 123.66,       "exponential": 123e12     }'''
