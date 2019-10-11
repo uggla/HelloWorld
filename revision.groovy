@@ -51,7 +51,7 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["records"] = null
     historyData["records"] = readHistory(historyData)
     if (historyData["records"]) {
-        LinkedHashMap realMap = historyData["records"] as LinkedHashMap
+        Map<String,String> realmap = historyData["records"].collectEntries{ [(it.keys):it.values] }
         historyData["prevBuild"] = realMap.max {it.keys}
         historyData["prevCommit"] = realMap.max {it.keys}.value
     }
