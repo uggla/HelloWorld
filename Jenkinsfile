@@ -12,7 +12,7 @@ node {
     /* println(historyData) */
     /* revision.updateHistory(historyData) */
     s = revision.essai()
-    revision.writeData(s)
+    /* revision.writeData(s) */
     sh "cat essai.json"
     sh "ls -al"
     sh "cat revision.json"

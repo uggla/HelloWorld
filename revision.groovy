@@ -94,6 +94,11 @@ def updateHistory(Map historyData) {
 }
 
 def essai() {
+    s = essai2()
+    writeData(s)
+}
+
+def essai2() {
     def jsonSlurper = new JsonSlurper()
     def object = jsonSlurper.parseText '''     { "simple": 123,       "fraction": 123.66,       "exponential": 123e12     }'''
     assert object instanceof Map
