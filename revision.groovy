@@ -99,9 +99,9 @@ def essai() {
     assert object instanceof Map
     assert object.simple == 123
     println(object.max {it.key})
-    // def json = JsonOutput.toJson(object)
-    // writeFile(file:"essai.json", text:json)
-    // sh "cat essai.json"
+    def json = JsonOutput.toJson(object)
+    writeFile(file:"essai.json", text:json)
+    sh "cat essai.json"
 }
 // def updateHistory(String toto) {
 //     println(toto)
