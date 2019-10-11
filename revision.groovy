@@ -54,7 +54,7 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     if (historyData["records"]) {
         // def data = JsonOutput.toJson(historyData["records"])
         // def realmap = new JsonSlurper().parseText(data)
-        println(realmap.getClass())
+        println(historyData["records"].getClass())
         // historyData["prevBuild"] = realmap.max {it.key}
         // historyData["prevCommit"] = realmap.max {it.key}.value
     }
