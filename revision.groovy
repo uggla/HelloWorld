@@ -53,8 +53,8 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["records"] = readHistory(historyData)
     if (historyData["records"]) {
         def realmap = JsonOutput.toJson(historyData["records"])
-        historyData["prevBuild"] = realMap.max {it.keys}
-        historyData["prevCommit"] = realMap.max {it.keys}.value
+        // historyData["prevBuild"] = realMap.max {it.keys}
+        // historyData["prevCommit"] = realMap.max {it.keys}.value
     }
     return historyData
 }
