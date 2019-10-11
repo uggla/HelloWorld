@@ -100,7 +100,7 @@ def essai() {
     assert object.simple == 123
     def json = JsonOutput.toJson(object)
     writeFile(file:"essai.json", text:json)
-    sh "cat essai.json"
+    // sh "cat essai.json"
     // println(object.max {it.key})
 }
 // def updateHistory(String toto) {
