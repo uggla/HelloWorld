@@ -66,8 +66,6 @@ def readHistory(Map historyData) {
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
-            truc = convert(jsonData)
-            println(truc.getClass())
         }
     }
     else {
@@ -97,7 +95,7 @@ def updateHistory(Map historyData) {
 
 @NonCPS
 def essai() {
-    def jsonSlurper = new JsonSlurper() 
+    def jsonSlurper = new JsonSlurper()
     def object = jsonSlurper.parseText '''     { "simple": 123,       "fraction": 123.66,       "exponential": 123e12     }'''
     assert object instanceof Map
     assert object.simple == 123
