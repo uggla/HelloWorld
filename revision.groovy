@@ -66,8 +66,8 @@ def readHistory(Map historyData) {
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
-            jsonData = convert(jsonData)
-            println(jsonData.getClass())
+            truc = convert(jsonData)
+            println(truc.getClass())
         }
     }
     else {
