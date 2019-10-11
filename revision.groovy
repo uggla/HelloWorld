@@ -55,8 +55,8 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     if (historyData["records"]) {
         def data = JsonOutput.toJson(historyData["records"])
         def realmap = new JsonSlurper().parseText(data)
-        historyData["prevBuild"] = realmap.max {it.key}
-        historyData["prevCommit"] = realmap.max {it.key}.value
+        // historyData["prevBuild"] = realmap.max {it.key}
+        // historyData["prevCommit"] = realmap.max {it.key}.value
     }
     return historyData
 }
@@ -66,6 +66,7 @@ def readHistory(Map historyData) {
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
+            println(jsonData.getClass)
         }
     }
     else {
