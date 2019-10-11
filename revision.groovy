@@ -99,7 +99,7 @@ def essai() {
     assert object instanceof Map
     assert object.simple == 123
     def json = JsonOutput.toJson(object)
-    // writeFile(file:"essai.json", text:json)
+    writeFile(file:"essai.json", text:json)
     // sh "cat essai.json"
     // println(object.max {it.key})
 }
