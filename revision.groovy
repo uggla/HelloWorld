@@ -99,7 +99,9 @@ def essai() {
     assert object instanceof Map
     assert object.simple == 123
     println(object.max {it.key})
-    writeJSON(file:"essai.json", json:object)
+    def json = JsonSlurper()parseText(object)
+    writeFile(file:"essai.json", text:json)
+    sh "cat essai.json"
 }
 // def updateHistory(String toto) {
 //     println(toto)
