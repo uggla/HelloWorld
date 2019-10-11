@@ -11,7 +11,9 @@ node {
     /* def historyData = revision.build("revision.json", build , git.GIT_COMMIT) */
     /* println(historyData) */
     /* revision.updateHistory(historyData) */
-    revision.essai()
+    s = revision.essai()
+    revision.writeData(s)
+    sh "cat essai.json"
     sh "ls -al"
     sh "cat revision.json"
     println(git)

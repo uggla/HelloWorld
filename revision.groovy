@@ -101,7 +101,7 @@ def essai() {
     def json = JsonOutput.toJson(object)
     println(json)
     println(json.getClass())
-    writeData(json)
+    return json
     // sh "cat essai.json"
     // println(object.max {it.key})
 }
