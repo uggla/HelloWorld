@@ -98,6 +98,7 @@ def essai() {
     writeData(s)
 }
 
+@NonCPS
 def essai2() {
     def jsonSlurper = new JsonSlurper()
     def object = jsonSlurper.parseText '''     { "simple": 456,       "fraction": 123.66,       "exponential": 123e12     }'''
