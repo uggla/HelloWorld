@@ -88,6 +88,13 @@ def updateHistory(Map historyData) {
     writeHistory(historyData)
 }
 
+def essai() {
+    def jsonSlurper = new JsonSlurper() 
+    def object = jsonSlurper.parseText '''     { "simple": 123,       "fraction": 123.66,       "exponential": 123e12     }'''
+    assert object instanceof Map
+    assert object.simple == 123
+    println(object.max {it.key})
+}
 // def updateHistory(String toto) {
 //     println(toto)
 // }

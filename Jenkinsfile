@@ -7,11 +7,11 @@ node {
     def myMethod = load("myMethod.groovy")
     /* def myClass = load("myClass.groovy") */
     def revision = load("revision.groovy")
-    Random random = new Random()
-    String build = "build-" + env.BUILD_NUMBER
-    def historyData = revision.build("revision.json", build , git.GIT_COMMIT)
-    println(historyData)
-    revision.updateHistory(historyData)
+    /* String build = "build-" + env.BUILD_NUMBER */
+    /* def historyData = revision.build("revision.json", build , git.GIT_COMMIT) */
+    /* println(historyData) */
+    /* revision.updateHistory(historyData) */
+    revision.essai()
     sh "ls -al"
     sh "cat revision.json"
     println(git)
