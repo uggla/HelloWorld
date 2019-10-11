@@ -38,7 +38,6 @@ import groovy.json.JsonSlurper
 //         this.writeHistory()
 //     }
 // }
-@NonCPS
 def build(String historyFile, String currentBuild, String currentCommit) {
     //return(new buildHistory(historyFile, currentCommit, currentBuild));
     println("coucou")
@@ -53,11 +52,11 @@ def build(String historyFile, String currentBuild, String currentCommit) {
     historyData["records"] = null
     historyData["records"] = readHistory(historyData)
     if (historyData["records"]) {
-        def data = JsonOutput.toJson(historyData["records"])
-        def realmap = new JsonSlurper().parseText(data)
+        // def data = JsonOutput.toJson(historyData["records"])
+        // def realmap = new JsonSlurper().parseText(data)
         println(realmap.getClass())
-        historyData["prevBuild"] = realmap.max {it.key}
-        historyData["prevCommit"] = realmap.max {it.key}.value
+        // historyData["prevBuild"] = realmap.max {it.key}
+        // historyData["prevCommit"] = realmap.max {it.key}.value
     }
     return historyData
 }
@@ -67,6 +66,7 @@ def readHistory(Map historyData) {
     if ( fileExists(historyData["historyFile"])) {
         lock(resource: "lock_${historyData["historyFile"]}", inversePrecedence: true) {
             jsonData = readJSON(file:historyData["historyFile"])
+            jsonData = convert(jsonData)
             println(jsonData.getClass())
         }
     }
@@ -74,6 +74,13 @@ def readHistory(Map historyData) {
         jsonData = readJSON(text: '{}')
     }
     return jsonData
+}
+
+@NonCPS
+def convert(Map json) {
+        def data = JsonOutput.toJson(json)
+        def realmap = new JsonSlurper().parseText(data)
+        return realmap
 }
 
 def writeHistory(Map historyData) {
