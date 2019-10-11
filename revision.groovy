@@ -101,9 +101,13 @@ def essai() {
     def json = JsonOutput.toJson(object)
     println(json)
     println(json.getClass())
-    writeFile(file:"essai.json", text:json)
+    writeData(json)
     // sh "cat essai.json"
     // println(object.max {it.key})
+}
+
+def writeData(String data) {
+    writeFile(file:"essai.json", text:data)
 }
 // def updateHistory(String toto) {
 //     println(toto)
