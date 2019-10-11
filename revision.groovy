@@ -38,7 +38,7 @@ import groovy.json.JsonSlurper
 //         this.writeHistory()
 //     }
 // }
-
+@NonCPS
 def build(String historyFile, String currentBuild, String currentCommit) {
     //return(new buildHistory(historyFile, currentCommit, currentBuild));
     println("coucou")
@@ -56,8 +56,8 @@ def build(String historyFile, String currentBuild, String currentCommit) {
         def data = JsonOutput.toJson(historyData["records"])
         def realmap = new JsonSlurper().parseText(data)
         println(realmap.getClass())
-        // historyData["prevBuild"] = realmap.max {it.key}
-        // historyData["prevCommit"] = realmap.max {it.key}.value
+        historyData["prevBuild"] = realmap.max {it.key}
+        historyData["prevCommit"] = realmap.max {it.key}.value
     }
     return historyData
 }
