@@ -100,7 +100,7 @@ def essai() {
 
 def essai2() {
     def jsonSlurper = new JsonSlurper()
-    def object = jsonSlurper.parseText '''     { "simple": 123,       "fraction": 123.66,       "exponential": 123e12     }'''
+    def object = jsonSlurper.parseText '''     { "simple": 456,       "fraction": 123.66,       "exponential": 123e12     }'''
     assert object instanceof Map
     assert object.simple == 123
     def json = JsonOutput.toJson(object)
